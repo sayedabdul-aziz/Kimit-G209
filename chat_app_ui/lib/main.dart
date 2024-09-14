@@ -1,4 +1,4 @@
-import 'package:chat_app_ui/auth/login_view.dart';
+import 'package:chat_app_ui/splash_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginView(),
+      home: SplashView(),
     );
   }
 }

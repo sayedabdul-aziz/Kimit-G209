@@ -1,4 +1,5 @@
 import 'package:chat_app_ui/chat/chat_model.dart';
+import 'package:chat_app_ui/chat/profile_view.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteContacts extends StatelessWidget {
@@ -31,37 +32,44 @@ class FavoriteContacts extends StatelessWidget {
                 return const SizedBox(width: 10);
               },
               itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    Stack(
-                      children: [
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundImage: NetworkImage(users[index].avatarUrl),
-                        ),
-                        if (users[index].isOnline)
-                          const Positioned(
-                            right: 0,
-                            bottom: 0,
-                            child: CircleAvatar(
-                              radius: 11,
-                              backgroundColor: Colors.indigoAccent,
+                return InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const HomeScreen()));
+                  },
+                  child: Column(
+                    children: [
+                      Stack(
+                        children: [
+                          CircleAvatar(
+                            radius: 30,
+                            backgroundImage:
+                                NetworkImage(users[index].avatarUrl),
+                          ),
+                          if (users[index].isOnline)
+                            const Positioned(
+                              right: 0,
+                              bottom: 0,
                               child: CircleAvatar(
-                                radius: 8,
-                                backgroundColor: Colors.green,
+                                radius: 11,
+                                backgroundColor: Colors.indigoAccent,
+                                child: CircleAvatar(
+                                  radius: 8,
+                                  backgroundColor: Colors.green,
+                                ),
                               ),
-                            ),
-                          )
-                      ],
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      users[index].name.split(' ').first,
-                      style: const TextStyle(
-                        color: Colors.white,
+                            )
+                        ],
                       ),
-                    )
-                  ],
+                      const SizedBox(height: 5),
+                      Text(
+                        users[index].name.split(' ').first,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
                 );
               },
             ),

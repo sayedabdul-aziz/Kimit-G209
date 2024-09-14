@@ -13,6 +13,10 @@ class ChatList extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         decoration: const BoxDecoration(
           color: Colors.white,
+          image: DecorationImage(
+            image: NetworkImage(
+                'https://www.transparenttextures.com/patterns/cubes.png'),
+          ),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30), topRight: Radius.circular(30)),
         ),
