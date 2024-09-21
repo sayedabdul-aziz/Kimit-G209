@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:taskati/core/constants/colors.dart';
 import 'package:taskati/core/services/local_storage.dart';
 import 'package:taskati/feature/splash_view.dart';
 
@@ -15,9 +16,23 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashView(),
+      theme: ThemeData(
+          inputDecorationTheme: InputDecorationTheme(
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.primaryColor),
+                  borderRadius: BorderRadius.circular(10)),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.primaryColor),
+                  borderRadius: BorderRadius.circular(10)),
+              errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.redColor),
+                  borderRadius: BorderRadius.circular(10)),
+              focusedErrorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.redColor),
+                  borderRadius: BorderRadius.circular(10)))),
+      home: const SplashView(),
     );
   }
 }

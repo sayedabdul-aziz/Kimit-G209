@@ -102,18 +102,7 @@ class _UploadViewState extends State<UploadView> {
                 },
                 decoration: InputDecoration(
                     hintText: 'Enter Your Name',
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.primaryColor),
-                        borderRadius: BorderRadius.circular(10)),
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.primaryColor),
-                        borderRadius: BorderRadius.circular(10)),
-                    errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.redColor),
-                        borderRadius: BorderRadius.circular(10)),
-                    focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.redColor),
-                        borderRadius: BorderRadius.circular(10))),
+                    ),
               )
             ],
           ),
