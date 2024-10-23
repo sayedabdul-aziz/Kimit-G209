@@ -20,10 +20,11 @@ class TodayHeaderWidget extends StatelessWidget {
           children: [
             Text(
               DateFormat.yMMMMd().format(DateTime.now()),
-              style: getTitleTextStyle(fontWeight: FontWeight.w600),
+              style: getTitleTextStyle(context, fontWeight: FontWeight.w600),
             ),
             const Gap(5),
-            Text('Today', style: getBodyTextStyle(fontWeight: FontWeight.w700)),
+            Text('Today',
+                style: getBodyTextStyle(context, fontWeight: FontWeight.w700)),
           ],
         ),
         const Spacer(),

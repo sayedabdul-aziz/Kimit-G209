@@ -95,14 +95,17 @@ class _UploadViewState extends State<UploadView> {
               const Divider(),
               const Gap(16),
               TextFormField(
+                style: getBodyTextStyle(
+                  context,
+                ),
                 onChanged: (value) {
                   setState(() {
                     name = value;
                   });
                 },
-                decoration: InputDecoration(
-                    hintText: 'Enter Your Name',
-                    ),
+                decoration: const InputDecoration(
+                  hintText: 'Enter Your Name',
+                ),
               )
             ],
           ),
