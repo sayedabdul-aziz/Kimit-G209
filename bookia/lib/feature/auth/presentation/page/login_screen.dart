@@ -1,8 +1,10 @@
+import 'package:bookia/core/function/dialogs.dart';
 import 'package:bookia/core/function/navigation.dart';
 import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/text_style.dart';
 import 'package:bookia/core/widgets/custom_back_button.dart';
 import 'package:bookia/core/widgets/custom_button.dart';
+import 'package:bookia/core/widgets/nav_bar.dart';
 import 'package:bookia/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:bookia/feature/auth/presentation/bloc/auth_event.dart';
 import 'package:bookia/feature/auth/presentation/bloc/auth_state.dart';
@@ -42,11 +44,12 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is LoginLoadingState) {
-            //
+            showLoadingDialog(context);
           } else if (state is LoginSuccessState) {
-            //
+            pushAndRemoveUntil(context, const NavBarWidget());
           } else if (state is LoginErrorState) {
-            //
+            Navigator.pop(context);
+            showErrorDialog(context, 'Something went wrong');
           }
         },
         child: Padding(
@@ -117,7 +120,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 text: 'Login',
                 onTap: () {
                   if (formKey.currentState!.validate()) {
-                    context.read<AuthBloc>().add(LoginEvent());
+                    context.read<AuthBloc>().add(LoginEvent(
+                          email: emailController.text,
+                          password: passwordController.text,
+                        ));
                   }
                 },
               ),

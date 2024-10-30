@@ -1,5 +1,7 @@
 import 'package:bookia/core/function/navigation.dart';
+import 'package:bookia/core/services/local/local_storage.dart';
 import 'package:bookia/core/utils/text_style.dart';
+import 'package:bookia/core/widgets/nav_bar.dart';
 import 'package:bookia/feature/intro/presentation/page/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,8 +18,16 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
+    String? token;
+    AppLocalStorage.getData('token').then((value) {
+      token = value;
+    });
     Future.delayed(const Duration(seconds: 3), () {
-      pushReplacement(context, const WelcomeScreen());
+      if (token != null) {
+        pushReplacement(context, const NavBarWidget());
+      } else {
+        pushReplacement(context, const WelcomeScreen());
+      }
     });
   }
 
@@ -30,7 +40,7 @@ class _SplashViewState extends State<SplashView> {
           children: [
             SizedBox(
                 width: 250, child: SvgPicture.asset('assets/images/logo.svg')),
-            Gap(9),
+            const Gap(9),
             Text(
               'Order Your Book Now!',
               style: getBodyTextStyle(context),

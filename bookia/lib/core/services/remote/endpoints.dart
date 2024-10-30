@@ -3,4 +3,8 @@ class AppEndpoints {
 
   // auth
   static const String register = '/register';
+  static const String login = '/login';
+
+  // home
+  static const String getNewArrivalsBooks = '/products-new-arrivals';
 }

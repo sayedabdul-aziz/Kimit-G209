@@ -6,6 +6,8 @@
 // - check if the "status code" of response is 201 or not
 // - if it is 201, parse the response to model and return it
 
+import 'dart:developer';
+
 import 'package:bookia/core/services/remote/endpoints.dart';
 import 'package:bookia/feature/auth/data/models/user_model_response/user_model_response.dart';
 import 'package:dio/dio.dart';
@@ -17,23 +19,43 @@ class AuthRepo {
       {required String name,
       required String email,
       required String password,
-      required String password_confirmation}) async {
+      required String passwordConfirmation}) async {
     try {
       var response =
           await Dio().post(AppEndpoints.baseUrl + AppEndpoints.register, data: {
         "name": name,
         "email": email,
         "password": password,
-        "password_confirmation": password_confirmation
+        "password_confirmation": passwordConfirmation
       });
       if (response.statusCode == 201) {
-        print('-----1-----');
         return UserModelResponse.fromJson(response.data);
       } else {
         return null;
       }
     } on Exception catch (e) {
-      print(e.toString());
+      log(e.toString());
+      return null;
+    }
+  }
+
+  static Future<UserModelResponse?> login({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      var response =
+          await Dio().post(AppEndpoints.baseUrl + AppEndpoints.login, data: {
+        "email": email,
+        "password": password,
+      });
+      if (response.statusCode == 200) {
+        return UserModelResponse.fromJson(response.data);
+      } else {
+        return null;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
       return null;
     }
   }
