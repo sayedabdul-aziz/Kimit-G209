@@ -1,4 +1,3 @@
-import 'package:bookia/core/services/local/local_storage.dart';
 import 'package:bookia/core/utils/themes.dart';
 import 'package:bookia/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:bookia/feature/home/presentation/bloc/home_bloc.dart';
@@ -8,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await AppLocalStorage.init();
+  // await AppLocalStorage.init();
   runApp(const MainApp());
 }
 

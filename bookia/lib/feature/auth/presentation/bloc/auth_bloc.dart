@@ -1,4 +1,3 @@
-import 'package:bookia/core/services/local/local_storage.dart';
 import 'package:bookia/feature/auth/data/models/user_model_response/user_model_response.dart';
 import 'package:bookia/feature/auth/data/repo/auth_repo.dart';
 import 'package:bookia/feature/auth/presentation/bloc/auth_event.dart';
@@ -20,7 +19,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         .then((value) {
       if (value != null) {
         userModelResponse = value;
-        AppLocalStorage.cacheData('token', value.data?.token ?? '');
+        // AppLocalStorage.cacheData('token', value.data?.token ?? '');
         emit(LoginSuccessState());
       } else {
         emit(LoginErrorState());
@@ -39,7 +38,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         .then((value) {
       if (value != null) {
         userModelResponse = value;
-        AppLocalStorage.cacheData('token', value.data?.token ?? '');
+        // AppLocalStorage.cacheData('token', value.data?.token ?? '');
         emit(RegisterSuccessState());
       } else {
         emit(RegisterErrorState());

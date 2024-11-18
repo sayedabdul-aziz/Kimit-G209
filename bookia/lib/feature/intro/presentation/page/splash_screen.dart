@@ -1,8 +1,7 @@
-import 'package:bookia/core/function/navigation.dart';
+import 'dart:developer';
+
 import 'package:bookia/core/services/local/local_storage.dart';
 import 'package:bookia/core/utils/text_style.dart';
-import 'package:bookia/core/widgets/nav_bar.dart';
-import 'package:bookia/feature/intro/presentation/page/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -19,15 +18,15 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     String? token;
-    AppLocalStorage.getData('token').then((value) {
-      token = value;
-    });
+    // AppLocalStorage.getData('token').then((value) {
+    //   token = value;
+    // });
     Future.delayed(const Duration(seconds: 3), () {
-      if (token != null) {
-        pushReplacement(context, const NavBarWidget());
-      } else {
-        pushReplacement(context, const WelcomeScreen());
-      }
+      // if (token != null) {
+      //   pushReplacement(context, const NavBarWidget());
+      // } else {
+      //   pushReplacement(context, const WelcomeScreen());
+      // }
     });
   }
 
